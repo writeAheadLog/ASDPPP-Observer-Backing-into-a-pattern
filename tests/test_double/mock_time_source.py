@@ -1,4 +1,7 @@
-class MockTimeSource:
+from base.time_source import TimeSource
+
+
+class MockTimeSource(TimeSource):
     def __init__(self):
         self.__its_driver = None
 

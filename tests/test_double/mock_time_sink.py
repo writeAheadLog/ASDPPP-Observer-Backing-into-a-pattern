@@ -1,4 +1,7 @@
-class MockTimeSink:
+from base.time_sink import TimeSink
+
+
+class MockTimeSink(TimeSink):
     def __init__(self):
         self.__its_hours = None
         self.__its_minutes = None
