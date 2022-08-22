@@ -4,10 +4,11 @@ from base.time_source import TimeSource
 
 class MockTimeSource(TimeSource):
     def __init__(self):
-        self.__its_observer = None
+        self.__its_observer = []
 
-    def set_observer(self, observer: ClockObserver):
-        self.__its_observer = observer
+    def register_observer(self, observer: ClockObserver):
+        self.__its_observer.append(observer)
 
     def set_time(self, hours: int, minutes: int, seconds: int):
-        self.__its_observer.update(hours, minutes, seconds)
+        for observer in self.__its_observer:
+            observer.update(hours, minutes, seconds)
