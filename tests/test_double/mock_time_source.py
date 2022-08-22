@@ -1,15 +1,8 @@
 from base.clock_observer import ClockObserver
-from base.time_source import TimeSource
-from time_source_implementation import TimeSourceImplementation
+from base.time_source import Subject
 
 
-class MockTimeSource(TimeSource):
-    def __init__(self):
-        self.__ts_imp = TimeSourceImplementation()
-
+class MockTimeSource(Subject):
     def set_time(self, hours, minutes, seconds):
-        self.__ts_imp.notify(hours, minutes, seconds)
-
-    def register_observer(self, observer: ClockObserver):
-        self.__ts_imp.register_observer(observer)
+        self.notify_observers(hours, minutes, seconds)
 
